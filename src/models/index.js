@@ -1,18 +1,21 @@
 'use strict';
 
 require('dotenv').config();
-const { Sequelize, DataTypes } = require('sequelize');
-const food = require('./food');
-const clothes = require('./clothes');
-
+const { Sequelize } = require('sequelize');
 const SQL_URL = process.env.SQL_URL || "sqlite:memory";
-const sequelize = new Sequelize(SQL_URL);
 
-const foodModel = food(sequelize, DataTypes);
-const clothesModel = clothes(sequelize, DataTypes);
+const createFood = require('./food');
+const createClothes = require('./clothes');
+const Collection = require('./collection');
+
+const sequelize = new Sequelize(SQL_URL);
+const foodModel = createFood(sequelize);
+const clothesModel = createClothes(sequelize);
+
+//create associations
 
 module.exports = {
     sequelize,
-    Food: foodModel,
-    Clothes: clothesModel,
+    Food: new Collection(foodModel),
+    Clothes: new Collection(clothesModel),
 };
