@@ -1,8 +1,9 @@
 'use strict';
 
 require('dotenv').config();
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize, } = require('sequelize');
 
+//having 2 colons in the following line drops the sequel after use
 const SQL_URL = process.env.SQL_URL || 'sqlite::memory:';
 
 const sequelize = new Sequelize(SQL_URL);
