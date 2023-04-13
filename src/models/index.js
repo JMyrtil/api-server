@@ -1,7 +1,7 @@
 'use strict';
 
 require('dotenv').config();
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 const SQL_URL = process.env.SQL_URL || 'sqlite::memory';
 
 const food = require('./food.js');
@@ -15,6 +15,6 @@ const clothesModel = clothes(sequelize);
 
 module.exports = {
   sequelize,
-  foodCollection: new Collection(foodModel),
-  clothesCollection: new Collection(clothesModel),
+  Food: new Collection(foodModel),
+  Clothes: new Collection(clothesModel),
 };

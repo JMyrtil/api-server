@@ -18,6 +18,4 @@ const Food = (sequelize) => sequelize.define('Food', {
   },
 });
 
-module.exports = {
-  Food
-};
+module.exports = Food;

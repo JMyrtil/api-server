@@ -3,12 +3,11 @@
 require('dotenv').config();
 
 const server = require('./src/server');
-const sequelize = require('./src/models/index');
+const { sequelize } = require('./src/models/');
 
 sequelize.sync()
   .then(() => {
+    server.start(3001);
     console.log('Successful Connection!');
-    server.start();
   })
   .catch(e => console.error(e));
-  

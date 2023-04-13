@@ -18,6 +18,4 @@ const Clothes = (sequelize) => sequelize.define('Clothes', {
   },
 });
 
-module.exports = {
-  Clothes
-};
+module.exports = Clothes;
